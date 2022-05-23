@@ -5,20 +5,31 @@ const Inventory = ({ ingredients }) => {
   const [inventory, setInventory] = useState([]);
 
   const onAddHandler = (item) => {
-    setInventory((prevInv)=> [...prevInv,item])
+    const set = new Set(inventory); //helps avoid duplicate entries
+    set.add(item);
+    setInventory(() => [...set]);
+  };
+
+  const onRemoveHandler = (item) => {
+    const removedArr = inventory.filter(ingredient=>item !== ingredient)
+    setInventory(() => removedArr);
   };
 
   return (
-    <div>
+    <div> 
       <div>
         <ul className="list-group">
           {inventory.map((item) => (
-            <li
+            <a
+              href="#"
               className="list-group-item list-group-item-action"
-              key={item[1]} 
+              key={item[1]}
+              onClick={() => {
+                onRemoveHandler(item);
+              }}
             >
               {item[0]}
-            </li>
+            </a>
           ))}
         </ul>
       </div>
@@ -41,7 +52,9 @@ const Inventory = ({ ingredients }) => {
               href="#"
               className="list-group-item list-group-item-action"
               key={item[1]}
-              onClick={()=>{onAddHandler(item)}}
+              onClick={() => {
+                onAddHandler(item);
+              }}
             >
               {item[0]}
             </a>
