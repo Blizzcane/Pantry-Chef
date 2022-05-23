@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import IngredientList from "./IngredientList";
 import InventoryForm from "./InventoryForm";
-import './inventory.css'
+import "./inventory.css";
 
-const Inventory = ({ ingredients }) => {
+const Inventory = ({ ingredients, onUpdatePantry }) => {
   const [inventory, setInventory] = useState([]);
 
   //add to the inventory form
@@ -21,8 +21,12 @@ const Inventory = ({ ingredients }) => {
 
   return (
     <div className="inventory">
-      <InventoryForm onRemoveHandler={onRemoveHandler} inventory={inventory} />
-      <div class="vr" style={{margin:"5px"}}></div>
+      <InventoryForm
+        onUpdatePantry={onUpdatePantry}
+        onRemoveHandler={onRemoveHandler}
+        inventory={inventory}
+      />
+      <div className="vr" style={{ margin: "5px" }}></div>
 
       <IngredientList ingredients={ingredients} onAddHandler={onAddHandler} />
     </div>
