@@ -18,8 +18,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
-      {pantry}
+      <Header /> 
       <Inventory onUpdatePantry={onUpdatePantry} ingredients={ingredients} />
     </div>
   );
