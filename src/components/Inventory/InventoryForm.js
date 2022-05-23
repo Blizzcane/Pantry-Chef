@@ -1,9 +1,11 @@
 import React from "react";
+import "./InventoryForm.css";
 
 const InventoryForm = ({ onRemoveHandler, inventory }) => {
   return (
-    <>
-      <ul className="list-group">
+    <div className="flexForm">
+      <h2 className="text-center ">Inventory to Add</h2>
+      <ul className="list-group ">
         {inventory.map((item) => (
           <a
             href="#"
@@ -17,7 +19,7 @@ const InventoryForm = ({ onRemoveHandler, inventory }) => {
           </a>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

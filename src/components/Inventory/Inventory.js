@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import IngredientList from "./IngredientList";
 import InventoryForm from "./InventoryForm";
+import './inventory.css'
 
 const Inventory = ({ ingredients }) => {
   const [inventory, setInventory] = useState([]);
@@ -19,8 +20,10 @@ const Inventory = ({ ingredients }) => {
   };
 
   return (
-    <div>
+    <div className="inventory">
       <InventoryForm onRemoveHandler={onRemoveHandler} inventory={inventory} />
+      <div class="vr" style={{margin:"5px"}}></div>
+
       <IngredientList ingredients={ingredients} onAddHandler={onAddHandler} />
     </div>
   );

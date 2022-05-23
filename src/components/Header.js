@@ -1,14 +1,15 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import './Header.css';
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar className="fixed-top  " bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="#home">
           <img
-            alt=""
-            src="/logo.svg"
+            alt="logo"
+            src={require("../images/PantryChefSm.png")}
             width="30"
             height="30"
             className="d-inline-block align-top"

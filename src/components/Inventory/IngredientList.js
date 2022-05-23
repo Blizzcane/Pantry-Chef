@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import './IngredientList.css'
 
 
 //this component will render a filtered list of ingredients  
 const IngredientList = ({ ingredients, onAddHandler }) => {
   const [filter, setFilter] = useState("");
   return (
-    <>
+    <div className="flexItem">
       <p>
         Type to filter the list:
         <input
@@ -32,7 +33,7 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
             </a>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
 
