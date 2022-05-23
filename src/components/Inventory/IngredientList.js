@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import './IngredientList.css'
+import "./IngredientList.css";
 
-
-//this component will render a filtered list of ingredients  
+//this component will render a filtered list of ingredients
 const IngredientList = ({ ingredients, onAddHandler }) => {
   const [filter, setFilter] = useState("");
   return (
@@ -10,6 +9,7 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
       <p>
         Type to filter the list:
         <input
+          className="form-control"
           id="filter"
           name="filter"
           type="text"
@@ -24,7 +24,8 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
             <a
               href="#"
               className="list-group-item list-group-item-action"
-              key={item[1]}
+              key={item[1]} 
+              title="Add ingredient"
               onClick={() => {
                 onAddHandler(item);
               }}

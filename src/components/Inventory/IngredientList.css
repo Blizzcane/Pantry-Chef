@@ -1,4 +1,6 @@
 .flexItem{
-    flex-grow: 4;
+    flex-grow: 5;
     padding: 10px;
+    flex-basis: 500px;
+
 }
