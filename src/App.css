@@ -1,4 +1,6 @@
-body { padding-top: 60px; }
+body { 
+  padding: 60px 100px 0px 100px;
+}
 ::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
