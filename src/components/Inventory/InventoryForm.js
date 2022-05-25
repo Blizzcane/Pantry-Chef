@@ -20,7 +20,7 @@ const InventoryForm = ({ onRemoveHandler, inventory, onUpdatePantry }) => {
           </p>
         )}
       </div>
-      <ul className="list-group ">
+      <ul className="list-group">
         {inventory.map((item) => (
           <a
             href="#"
