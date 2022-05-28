@@ -11,7 +11,7 @@ const Header = () => {
   const loggedinNavs = (
     <>
       <Nav className="me-auto">
-        <Nav.Link as={Link} to="/">
+        <Nav.Link as={Link} to="/dashboard">
           Home
         </Nav.Link>
         <Nav.Link as={Link} to="/recipes">
@@ -28,14 +28,16 @@ const Header = () => {
   return (
     <Navbar className="fixed-top  " bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
-          <img
-            alt="logo"
-            src={require("../images/PantryChefSm.png")}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
+        <Navbar.Brand>
+          <Link to="/dashboard">
+            <img
+              alt="logo"
+              src={require("../images/PantryChefSm.png")}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />
+          </Link>
           Pantry Chef
         </Navbar.Brand>
         {isAuthenticated ? loggedinNavs : <LoginButton />}
