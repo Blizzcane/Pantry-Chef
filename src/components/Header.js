@@ -1,9 +1,30 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './Header.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import "./Header.css";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 
 const Header = () => {
+  const { isAuthenticated } = useAuth0();
+  const loggedinNavs = (
+    <>
+      <Nav className="me-auto">
+        <Nav.Link as={Link} to="/">
+          Home
+        </Nav.Link>
+        <Nav.Link as={Link} to="/recipes">
+          Recipes
+        </Nav.Link>
+        <Nav.Link as={Link} to="/inventory">
+          My Inventory
+        </Nav.Link>
+      </Nav>
+      <LogoutButton />
+    </>
+  );
+
   return (
     <Navbar className="fixed-top  " bg="dark" variant="dark">
       <Container>
@@ -14,15 +35,10 @@ const Header = () => {
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{" "}
+          />
           Pantry Chef
         </Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link as={Link} to="/" >Home</Nav.Link>
-          <Nav.Link as={Link} to="/recipes" >Recipes</Nav.Link>
-          <Nav.Link as={Link} to="/inventory" >My Inventory</Nav.Link>
-        </Nav>
-        <Button variant="outline-success">Sign up</Button>
+        {isAuthenticated ? loggedinNavs : <LoginButton />}
       </Container>
     </Navbar>
   );

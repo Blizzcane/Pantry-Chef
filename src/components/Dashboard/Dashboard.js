@@ -1,10 +1,15 @@
 import React from "react";
+import Profile from "../Profile";
 import "./Dashboard.css";
 
 const Dashboard = ({ pantry }) => {
   return (
     <div className="dashboard">
-      <div>Recipes</div>
+      <div>
+        <h3>Recipes</h3>
+        <Profile />
+      </div>
+
       <div>
         <h3>My Pantry</h3>
         <ul className="list-group">
