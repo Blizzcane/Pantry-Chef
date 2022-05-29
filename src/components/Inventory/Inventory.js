@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import IngredientList from "./IngredientList";
 import InventoryForm from "./InventoryForm";
 import "./inventory.css";
+import Loading from "../Loading";
 
 const Inventory = ({ ingredients, onUpdatePantry }) => {
   const [inventory, setInventory] = useState([]);
@@ -32,5 +34,7 @@ const Inventory = ({ ingredients, onUpdatePantry }) => {
     </div>
   );
 };
-
-export default Inventory;
+ 
+export default withAuthenticationRequired(Inventory, {
+  onRedirecting: () => <Loading />,
+});
