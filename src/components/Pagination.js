@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import CardItems from "./CardItems";
+import ListItems from "./ListItems";
 
-const Items = ({ currentItems, ulClass, liClass }) => {
-  return (
-    <ul className={ulClass}>
-      {currentItems.map((item, idx) => (
-        <li className={liClass} key={item + idx}>
-          {item[0]}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const Pagination = ({ items, itemsPerPage, ulClass, liClass }) => {
+const Pagination = ({ items, itemsPerPage, ulClass, liClass, viewList }) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -30,7 +20,19 @@ const Pagination = ({ items, itemsPerPage, ulClass, liClass }) => {
   };
   return (
     <>
-      <Items currentItems={currentItems} liClass={liClass} ulClass={ulClass} />
+      {viewList ? (
+        <ListItems
+          currentItems={currentItems}
+          liClass={liClass}
+          ulClass={ulClass}
+        />
+      ) : (
+        <CardItems
+          currentItems={currentItems}
+          liClass={liClass}
+          ulClass={ulClass}
+        />
+      )}
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
