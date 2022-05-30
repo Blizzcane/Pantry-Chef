@@ -7,8 +7,7 @@ import Inventory from "./components/Inventory/Inventory";
 import ingredientData from "./data/top-1k-ingredients.json";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Loading from "./components/Loading";
-import ProtectedRoute from "./auth/protected-route";
+import Loading from "./components/Loading"; 
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -22,9 +21,9 @@ const App = () => {
     setPantry(() => [...new Set([...pantry, ...newItems])]);
   };
 
-  // if (isLoading) {
-  //   return <Loading/>;
-  // }
+  if (isLoading) {
+    return <Loading/>;
+  }
 
   return (
     <div className="App">
