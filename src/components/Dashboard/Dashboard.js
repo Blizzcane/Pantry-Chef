@@ -7,15 +7,17 @@ const Dashboard = ({ pantry }) => {
   return (
     <>
       <Profile />
-      <div className="d-flex flex-row bd-highlight mb-3 justify-content-evenly">
-        <div className="">
-          <h3 className="">Recipes</h3>
-          <RecipeView pantry={pantry} />
-        </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-9">
+            <h3 className="">Recipes</h3>
+            <RecipeView pantry={pantry} />
+          </div>
 
-        <div className="">
-          <h3>Inventory</h3>
-          <InventoryView pantry={pantry} />
+          <div className="col">
+            <h3>Inventory</h3>
+            <InventoryView pantry={pantry} />
+          </div>
         </div>
       </div>
     </>

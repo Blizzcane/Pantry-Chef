@@ -6,7 +6,7 @@ const RecipeView = ({pantry}) => {
 
     return (
       <Pagination
-        itemsPerPage={10}
+        itemsPerPage={6}
         items={pantry} 
         ulClass="list-group-item list-group-item-action"
         viewList={false}

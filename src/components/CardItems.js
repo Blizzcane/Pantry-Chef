@@ -1,21 +1,18 @@
 import React from "react";
 
 const CardItems = ({ currentItems }) => {
+  const placeholder = "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg";
   return (
-    <div className="row row-cols-1 row-cols-md-4 g-4">
+    <div className="d-flex flex-wrap justify-content-evenly ">
       {currentItems.map((item, idx) => (
-        <div className="col">
-          <div className="card h-100">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">{item[0]}</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
-            </div>
-          </div>
+        <div className="card m-2" style={{width: "16rem"}}>
+        <img src={placeholder} className="card-img-top" alt="..."/>
+        <div className="card-body">
+          <h5 className="card-title">{item[0]}</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" className="btn btn-primary">View Recipe</a>
         </div>
+      </div>
       ))}
     </div>
   );
