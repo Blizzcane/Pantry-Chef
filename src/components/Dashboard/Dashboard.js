@@ -1,25 +1,19 @@
 import React from "react";
-import Profile from "../Profile";
-import "./Dashboard.css";
+import Profile from "../Profile"; 
+import InventoryView from "./InventoryView";
 
 const Dashboard = ({ pantry }) => {
   return (
     <>
       <Profile />
-      <div className="dashboard">
-        <div>
-          <h3>Recipes</h3>
+      <div className="d-flex flex-row bd-highlight mb-3 justify-content-evenly">
+        <div className="">
+          <h3 className="">Recipes</h3>
         </div>
 
-        <div>
-          <h3>My Pantry</h3>
-          <ul className="list-group">
-            {pantry.map((item) => (
-              <li className="list-group-item list-group-item-action">
-                {item[0]}
-              </li>
-            ))}
-          </ul>
+        <div className="">
+          <h3>Inventory</h3>
+          <InventoryView pantry={pantry} />
         </div>
       </div>
     </>

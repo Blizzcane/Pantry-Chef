@@ -10,7 +10,7 @@ const Profile = () => {
   return (
     <div className="row profile-header">
       <div className="col-md text-center text-md-left">
-        <h2>{name}</h2>
+        <h2>{nickname.charAt(0).toUpperCase() + nickname.slice(1)}'s Pantry</h2>
       </div>
     </div>
   );
