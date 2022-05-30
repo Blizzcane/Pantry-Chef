@@ -8,7 +8,7 @@ import ingredientData from "./data/top-1k-ingredients.json";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Loading from "./components/Loading";
-import ProtectedRoute from './auth/protected-route';
+import ProtectedRoute from "./auth/protected-route";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -22,18 +22,19 @@ const App = () => {
     setPantry(() => [...new Set([...pantry, ...newItems])]);
   };
 
-  if (isLoading) {
-    return <Loading/>;
-  }
+  // if (isLoading) {
+  //   return <Loading/>;
+  // }
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <ProtectedRoute  path="/dashboard" component={<Dashboard pantry={pantry} />} />
-        <ProtectedRoute
+        <Route path="/" element={<Dashboard pantry={pantry} />} />
+        <Route path="/dashboard" element={<Dashboard pantry={pantry} />} />
+        <Route
           path="inventory"
-          component={
+          element={
             <Inventory
               onUpdatePantry={onUpdatePantry}
               ingredients={ingredients}
