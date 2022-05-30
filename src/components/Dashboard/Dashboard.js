@@ -4,6 +4,8 @@ import InventoryView from "./InventoryView";
 import RecipeView from "./RecipeView";
 import axios from "axios";
 
+//need to find a cheaper API
+
 const Dashboard = ({ pantry }) => {
   const [recipes, setRecipes] = useState([]);
   const apiKey = "de299299b65b430a8672d0fa7ee9d94b";
