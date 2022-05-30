@@ -14,7 +14,7 @@ const Dashboard = ({ pantry }) => {
 
         <div className="">
           <h3>Inventory</h3>
-          <InventoryView itemsPerPage={10} pantry={pantry} />
+          <InventoryView   pantry={pantry} />
         </div>
       </div>
     </>
