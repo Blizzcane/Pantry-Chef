@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "../Profile"; 
 import InventoryView from "./InventoryView";
 
+
 const Dashboard = ({ pantry }) => {
   return (
     <>
@@ -13,7 +14,7 @@ const Dashboard = ({ pantry }) => {
 
         <div className="">
           <h3>Inventory</h3>
-          <InventoryView pantry={pantry} />
+          <InventoryView itemsPerPage={10} pantry={pantry} />
         </div>
       </div>
     </>
