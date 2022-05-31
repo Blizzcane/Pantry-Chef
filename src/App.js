@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     axios(url)
-      .then((response) => setIngredients(response.data))
+      .then((response) => setIngredients(response.data.meals))
       .catch((err) => console.log(err)); 
   }, []);
 

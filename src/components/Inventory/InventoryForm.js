@@ -6,7 +6,7 @@ const InventoryForm = ({ onRemoveHandler, inventory, onUpdatePantry }) => {
   const onSubmitHandler = () => {
     onUpdatePantry(inventory);
   };
-
+  
   return (
     <div className="flexForm">
       <h2 className="text-center">Inventory to Add</h2>
@@ -25,13 +25,13 @@ const InventoryForm = ({ onRemoveHandler, inventory, onUpdatePantry }) => {
           <a
             href="#"
             className="list-group-item list-group-item-action"
-            key={item[1]}
+            key={item.idIngredient}
             title="Remove ingredient"
             onClick={() => {
               onRemoveHandler(item);
             }}
           >
-            {item[0]}
+            {item.strIngredient}
           </a>
         ))}
       </ul>

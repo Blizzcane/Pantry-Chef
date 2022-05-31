@@ -4,6 +4,7 @@ import "./IngredientList.css";
 //this component will render a filtered list of ingredients
 const IngredientList = ({ ingredients, onAddHandler }) => {
   const [filter, setFilter] = useState("");
+ 
   return (
     <div className="flexItem">
       <p>
@@ -19,18 +20,18 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
       </p>
       <ul className="list-group">
         {ingredients
-          .filter((item) => item[0].includes(filter) || filter === "")
+          .filter((item) => item.strIngredient.toLowerCase().includes(filter) || filter === "")
           .map((item) => (
             <a
               href="#"
               className="list-group-item list-group-item-action"
-              key={item[1]} 
+              key={item.idIngredient} 
               title="Add ingredient"
               onClick={() => {
                 onAddHandler(item);
               }}
             >
-              {item[0]}
+              {item.strIngredient}
             </a>
           ))}
       </ul>
