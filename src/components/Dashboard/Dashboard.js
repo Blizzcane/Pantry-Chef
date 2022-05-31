@@ -7,20 +7,13 @@ import axios from "axios";
 //need to find a cheaper API
 
 const Dashboard = ({ pantry }) => {
-  const [recipes, setRecipes] = useState([]);
-  const apiKey = "de299299b65b430a8672d0fa7ee9d94b";
-  const ingredients = pantry
-    .map((item) => item[0])
-    .map((item) => item.replaceAll(" ", "%20"))
-    .join("+");
-
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=20`;
-
-  useEffect(() => { 
-      axios(url)
-        .then((response) => setRecipes(response.data))
-        .catch((err) => console.log(err)); 
-  }, [recipes]);
+  const [recipes, setRecipes] = useState([]); 
+  
+  // useEffect(() => { 
+  //     axios(url)
+  //       .then((response) => setRecipes(response.data))
+  //       .catch((err) => console.log(err)); 
+  // }, [recipes]);
 
   return (
     <>

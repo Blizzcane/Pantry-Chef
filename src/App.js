@@ -7,14 +7,18 @@ import Inventory from "./components/Inventory/Inventory";
 import ingredientData from "./data/top-1k-ingredients.json";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Loading from "./components/Loading"; 
+import Loading from "./components/Loading";
 
 const App = () => {
   const { isLoading } = useAuth0();
   const [ingredients, setIngredients] = useState([]);
   const [pantry, setPantry] = useState([]);
+  const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
+
   useEffect(() => {
-    setIngredients(ingredientData);
+    axios(url)
+      .then((response) => setIngredients(response.data))
+      .catch((err) => console.log(err)); 
   }, []);
 
   const onUpdatePantry = (newItems) => {
@@ -22,7 +26,7 @@ const App = () => {
   };
 
   if (isLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
