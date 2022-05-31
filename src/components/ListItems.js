@@ -3,9 +3,9 @@ import React from 'react'
 const ListItems = ({ currentItems, ulClass, liClass }) => {
     return (
       <ul className={ulClass}>
-        {currentItems.map((item, idx) => (
-          <li className={liClass} key={item + idx}>
-            {item[0]}
+        {currentItems.map(({idIngredient,strIngredient}) => (
+          <li className={liClass} key={idIngredient}>
+            {strIngredient}
           </li>
         ))}
       </ul>

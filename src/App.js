@@ -8,6 +8,7 @@ import ingredientData from "./data/top-1k-ingredients.json";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Loading from "./components/Loading";
+import RecipeView from "./components/Dashboard/RecipeView";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -35,6 +36,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Dashboard pantry={pantry} />} />
         <Route path="/dashboard" element={<Dashboard pantry={pantry} />} />
+        <Route path="/recipes" element={<RecipeView pantry={pantry} itemsPerPage={8} />} />
         <Route
           path="inventory"
           element={

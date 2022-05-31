@@ -7,20 +7,6 @@ import axios from "axios";
 //need to find a cheaper API
 
 const Dashboard = ({ pantry }) => {
-  const [recipes, setRecipes] = useState([]);
-  const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
-
-  useEffect(() => {
-    pantry.forEach((item) => {
-      axios(url + item.strIngredient)
-        .then((response) =>
-          setRecipes((prev) => [...prev, ...response.data.meals])
-        )
-        .catch((err) => console.log(err));
-    });
-  }, [pantry]);
-  console.log(recipes);
-
   return (
     <>
       <Profile />
@@ -28,7 +14,7 @@ const Dashboard = ({ pantry }) => {
         <div className="row">
           <div className="col-9">
             <h3 className="">Recipes</h3>
-            <RecipeView recipes={recipes} />
+            <RecipeView pantry={pantry} itemsPerPage={6} />
           </div>
 
           <div className="col">
