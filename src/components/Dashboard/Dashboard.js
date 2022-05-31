@@ -12,13 +12,14 @@ const Dashboard = ({ pantry }) => {
 
   useEffect(() => {
     pantry.forEach((item) => {
-      axios(url+item.strIngredient)
+      axios(url + item.strIngredient)
         .then((response) =>
-          setRecipes((prevRecipes) => [...prevRecipes, ...response.data.meals])
+          setRecipes((prev) => [...prev, ...response.data.meals])
         )
         .catch((err) => console.log(err));
-    }); 
+    });
   }, [pantry]);
+  console.log(recipes);
 
   return (
     <>

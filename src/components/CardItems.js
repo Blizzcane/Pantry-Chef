@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardItems = ({ currentItems }) => { 
+const CardItems = ({ currentItems }) => {  
   return (
     <div className="d-flex flex-wrap justify-content-evenly ">
       {currentItems.map((recipe) => (
