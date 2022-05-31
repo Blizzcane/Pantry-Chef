@@ -7,13 +7,18 @@ import axios from "axios";
 //need to find a cheaper API
 
 const Dashboard = ({ pantry }) => {
-  const [recipes, setRecipes] = useState([]); 
-  
-  // useEffect(() => { 
-  //     axios(url)
-  //       .then((response) => setRecipes(response.data))
-  //       .catch((err) => console.log(err)); 
-  // }, [recipes]);
+  const [recipes, setRecipes] = useState([]);
+  const url = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
+
+  useEffect(() => {
+    pantry.forEach((item) => {
+      axios(url+item.strIngredient)
+        .then((response) =>
+          setRecipes((prevRecipes) => [...prevRecipes, ...response.data.meals])
+        )
+        .catch((err) => console.log(err));
+    }); 
+  }, [pantry]);
 
   return (
     <>

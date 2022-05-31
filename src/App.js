@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   const onUpdatePantry = (newItems) => {
-    setPantry(() => [...new Set([...pantry, ...newItems])]);
+    setPantry(() => [...new Set([...pantry, ...newItems])]); 
   };
 
   if (isLoading) {
