@@ -1,5 +1,5 @@
 import React from "react";
-import Pagination from "../Pagination";
+import Pagination from "./Pagination/Pagination";
 
 const InventoryView = ({ pantry }) => {
   if (pantry.length === 0) return <p>No items in inventory</p>;

@@ -3,27 +3,41 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Header from "./components/Header";
-import Inventory from "./components/Inventory/Inventory";
-import ingredientData from "./data/top-1k-ingredients.json";
+import Inventory from "./components/Inventory/Inventory"; 
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Loading from "./components/Loading";
-import RecipeView from "./components/Dashboard/RecipeView";
+import Loading from "./components/Loading"; 
+import Recipes from "./components/Recipes/Recipes";
 
 const App = () => {
   const { isLoading } = useAuth0();
   const [ingredients, setIngredients] = useState([]);
   const [pantry, setPantry] = useState([]);
-  const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
+  const [recipes, setRecipes] = useState([]);
 
+  const ingredientUrl =
+    "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
+  const recipeUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
+
+  //initial load of ingredients from TheMealDB
   useEffect(() => {
-    axios(url)
+    axios(ingredientUrl)
       .then((response) => setIngredients(response.data.meals))
-      .catch((err) => console.log(err)); 
+      .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    pantry.forEach((item) => {
+      axios(recipeUrl + item.strIngredient)
+        .then((response) =>
+          setRecipes((prev) => [...prev, ...response.data.meals])
+        )
+        .catch((err) => console.log(err));
+    });
+  }, [pantry]);
+
   const onUpdatePantry = (newItems) => {
-    setPantry(() => [...new Set([...pantry, ...newItems])]); 
+    setPantry(() => [...new Set([...pantry, ...newItems])]);
   };
 
   if (isLoading) {
@@ -34,9 +48,15 @@ const App = () => {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Dashboard pantry={pantry} />} />
-        <Route path="/dashboard" element={<Dashboard pantry={pantry} />} />
-        <Route path="/recipes" element={<RecipeView pantry={pantry} itemsPerPage={14} />} />
+        <Route
+          path="/"
+          element={<Dashboard pantry={pantry} recipes={recipes} />}
+        />
+        <Route
+          path="/dashboard"
+          element={<Dashboard pantry={pantry} recipes={recipes} />}
+        />
+        <Route path="/recipes" element={<Recipes recipes={recipes} />} />
         <Route
           path="inventory"
           element={

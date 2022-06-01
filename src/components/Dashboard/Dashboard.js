@@ -6,7 +6,7 @@ import axios from "axios";
 
 //need to find a cheaper API
 
-const Dashboard = ({ pantry }) => {
+const Dashboard = ({ pantry, recipes }) => {
   return (
     <>
       <Profile />
@@ -14,7 +14,7 @@ const Dashboard = ({ pantry }) => {
         <div className="row">
           <div className="col-9">
             <h3 className="">Recipes</h3>
-            <RecipeView pantry={pantry} itemsPerPage={8} />
+            <RecipeView recipes={recipes} itemsPerPage={8} />
           </div>
 
           <div className="col">
