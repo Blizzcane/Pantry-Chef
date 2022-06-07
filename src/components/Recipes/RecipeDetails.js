@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
 const RecipeDetails = () => {
@@ -30,19 +31,29 @@ const RecipeDetails = () => {
 
   return (
     <div>
-      <h1>{recipe.strMeal}</h1>
-      <img
-        style={{ width: "20rem" }}
-        className="img-fluid img-thumbnail rounded float-start m-2"
-        src={recipe.strMealThumb}
-      />
-      {/* <p className="m-2">{recipe.strInstructions}</p> */}
-      <ul className="list-group list-group-flush list-group-numbered m-2">
-        {steps.map((step) => (
-          <li className="list-group-item">{step}</li>
-        ))}
-      </ul>
-      <button onClick={() => navigate("/dashboard")}>Go back</button>
+      <h1 className=" display-6 fw-normal">{recipe.strMeal.toUpperCase()}</h1>
+
+      <div>
+        <Button
+          variant="outline-success"
+          size="sm"
+          className="float-end"
+          onClick={() => navigate("/dashboard")}
+        >
+          Go back
+        </Button>
+        <img
+          style={{ width: "20rem" }}
+          className="img-fluid img-thumbnail rounded float-start m-2"
+          src={recipe.strMealThumb}
+        />
+        {/* <p className="m-2">{recipe.strInstructions}</p> */}
+        <ul className="list-group list-group-flush list-group-numbered m-2">
+          {steps.map((step) => (
+            <li className="list-group-item">{step}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
