@@ -3,11 +3,12 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Header from "./components/Header";
-import Inventory from "./components/Inventory/Inventory"; 
+import Inventory from "./components/Inventory/Inventory";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Loading from "./components/Loading"; 
+import Loading from "./components/Loading";
 import Recipes from "./components/Recipes/Recipes";
+import RecipeDetails from "./components/Recipes/RecipeDetails";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -64,6 +65,17 @@ const App = () => {
               onUpdatePantry={onUpdatePantry}
               ingredients={ingredients}
             />
+          }
+        />
+        <Route path="/recipe-details" element={<RecipeDetails />}>
+          <Route path=":recipeId" element={<RecipeDetails />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
           }
         />
       </Routes>

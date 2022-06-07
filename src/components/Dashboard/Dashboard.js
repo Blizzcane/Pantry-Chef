@@ -3,10 +3,14 @@ import Profile from "../Profile";
 import InventoryView from "./InventoryView";
 import RecipeView from "./RecipeView";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 //need to find a cheaper API
 
 const Dashboard = ({ pantry, recipes }) => {
+  let navigate = useNavigate();
+
   return (
     <>
       <Profile />
