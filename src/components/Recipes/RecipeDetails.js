@@ -42,17 +42,20 @@ const RecipeDetails = () => {
         >
           Go back
         </Button>
-        <img
-          style={{ width: "20rem" }}
-          className="img-fluid img-thumbnail rounded float-start m-2"
-          src={recipe.strMealThumb}
-        />
-        {/* <p className="m-2">{recipe.strInstructions}</p> */}
-        <ul className="list-group list-group-flush list-group-numbered m-2">
-          {steps.map((step) => (
-            <li className="list-group-item">{step}</li>
-          ))}
-        </ul>
+        <div>
+          <img
+            style={{ width: "20rem" }}
+            className="img-fluid img-thumbnail rounded float-start m-2"
+            src={recipe.strMealThumb}
+          />
+        </div>
+        <div>
+          <ul className="list-group list-group-flush list-group-numbered m-2">
+            {steps.map((step) => (
+              <li className="list-group-item ">{step}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
