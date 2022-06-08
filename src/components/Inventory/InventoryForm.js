@@ -13,7 +13,7 @@ const InventoryForm = ({ onRemoveHandler, inventory, onUpdatePantry }) => {
 
       <div className="d-grid gap-2">
         {inventory.length > 0 ? (
-          <Button onClick={onSubmitHandler} className="btn btn-success btn-sm">Add to Pantry</Button>
+          <Button onClick={onSubmitHandler} className="btn btn-success btn-sm">Update Pantry</Button>
         ) : (
           <p className="text-center text-muted">
             select items to add to your pantry

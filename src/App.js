@@ -39,7 +39,7 @@ const App = () => {
   }, [pantry]);
 
   const onUpdatePantry = (newItems) => {
-    setPantry(() => [...new Set([...pantry, ...newItems])]);
+    setPantry(newItems);
     navigate("/dashboard")
   };
 
@@ -66,6 +66,7 @@ const App = () => {
             <Inventory
               onUpdatePantry={onUpdatePantry}
               ingredients={ingredients}
+              pantry={pantry}
             />
           }
         />
