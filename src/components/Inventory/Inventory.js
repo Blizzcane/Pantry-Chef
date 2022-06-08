@@ -15,7 +15,7 @@ const Inventory = ({ ingredients, onUpdatePantry, pantry }) => {
   const onAddHandler = (item) => {
     const set = new Set(inventory); //helps avoid duplicate entries
     set.add(item);
-    setInventory(() => [...set]);
+    setInventory(() => [...set]); 
   };
 
   //removes from the inventory form
