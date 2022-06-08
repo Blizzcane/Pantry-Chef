@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom"; 
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Header from "./components/Header";
@@ -15,6 +15,7 @@ const App = () => {
   const [ingredients, setIngredients] = useState([]);
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate();
 
   const ingredientUrl =
     "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
@@ -39,6 +40,7 @@ const App = () => {
 
   const onUpdatePantry = (newItems) => {
     setPantry(() => [...new Set([...pantry, ...newItems])]);
+    navigate("/dashboard")
   };
 
   if (isLoading) {
