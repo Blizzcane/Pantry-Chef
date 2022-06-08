@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const RecipeDetails = () => {
   let navigate = useNavigate();
   let { recipeId } = useParams();
-  const [recipe, setRecipe] = useState([]);
+  const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -25,9 +25,9 @@ const RecipeDetails = () => {
     };
   }, [recipeId]);
 
-  if (recipe.length === 0) return <div>Nothing here!</div>;
+  if (!recipe) return <div>Nothing here!</div>;
 
-  const steps = recipe.strInstructions.split(". ");
+  const steps = recipe.strInstructions.split(".");
 
   return (
     <div>
@@ -52,7 +52,9 @@ const RecipeDetails = () => {
         <div>
           <ul className="list-group list-group-flush list-group-numbered m-2">
             {steps.map((step) => (
-              <li className="list-group-item ">{step}</li>
+              <li key={step.slice(0, 4)} className="list-group-item">
+                {step}.
+              </li>
             ))}
           </ul>
         </div>
