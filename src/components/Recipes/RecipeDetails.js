@@ -25,7 +25,20 @@ const RecipeDetails = () => {
     };
   }, [recipeId]);
 
-  if (!recipe) return <div>Nothing here!</div>;
+  if (!recipe)
+    return (
+      <div>
+        <p>Nothing to see here!</p>
+        <Button
+          variant="outline-success"
+          size="sm"
+          className="float-end"
+          onClick={() => navigate("/dashboard")}
+        >
+          Go back
+        </Button>
+      </div>
+    );
 
   const steps = recipe.strInstructions.split(".");
 
