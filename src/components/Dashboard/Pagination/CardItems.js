@@ -11,11 +11,11 @@ const CardItems = ({ currentItems }) => {
           to={`/recipe-details/${idMeal}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <Card className="bg-dark rounded mb-2" style={{ width: "14rem" }}>
+          <Card className="mb-2 shadow" style={{ width: "14rem" }}>
             <Card.Img variant="top" src={strMealThumb} />
-            <Card.ImgOverlay>
+            <Card.Body>
               <Card.Title>{strMeal.toUpperCase()} </Card.Title>
-            </Card.ImgOverlay>
+            </Card.Body>
           </Card>
         </Link>
       ))}
