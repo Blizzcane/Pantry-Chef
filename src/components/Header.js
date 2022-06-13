@@ -26,7 +26,7 @@ const Header = () => {
   );
 
   return (
-    <Navbar className="fixed-top  " bg="dark" variant="dark">
+    <Navbar className="shadow-sm fixed-top" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>
           <Link to="/dashboard">

@@ -58,7 +58,7 @@ const RecipeDetails = () => {
         <div>
           <img
             style={{ width: "20rem" }}
-            className="img-fluid img-thumbnail rounded float-start m-2"
+            className="shadow img-fluid img-thumbnail rounded float-start m-2"
             src={recipe.strMealThumb}
           />
         </div>

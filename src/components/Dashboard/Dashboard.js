@@ -17,7 +17,7 @@ const Dashboard = ({ pantry, recipes }) => {
       <div className="container">
         <div className="row">
           <div className="col-9">
-            <h3 className="">Recipes</h3>
+            <h3>Recipes</h3>
             <RecipeView recipes={recipes} itemsPerPage={8} />
           </div>
 

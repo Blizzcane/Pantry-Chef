@@ -10,7 +10,7 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
       <p>
         Type to filter the list:
         <input
-          className="form-control"
+          className="form-control shadow-sm"
           id="filter"
           name="filter"
           type="text"
@@ -18,7 +18,7 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
           onChange={({ target }) => setFilter(target.value)}
         />
       </p>
-      <ul className="list-group">
+      <ul className="list-group shadow-sm">
         {ingredients
           .filter(
             (item) =>
