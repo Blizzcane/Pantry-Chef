@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import IngredientList from "./IngredientList";
 import InventoryForm from "./InventoryForm";
-import "./inventory.css";
+import "./index.css";
 import Loading from "../Loading";
 
 const Inventory = ({ ingredients, onUpdatePantry, pantry }) => {

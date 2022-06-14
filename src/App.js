@@ -3,11 +3,11 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import Header from "./components/Header";
-import Inventory from "./components/Inventory/Inventory";
+import Inventory from "./components/Inventory/index";
 import "./App.css";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/index";
 import Loading from "./components/Loading";
-import Recipes from "./components/Recipes/Recipes";
+import Recipes from "./components/Recipes/index";
 import RecipeDetails from "./components/Recipes/RecipeDetails";
 
 const App = () => {
