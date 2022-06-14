@@ -11,7 +11,7 @@ const CardItems = ({ currentItems }) => {
           to={`/recipe-details/${idMeal}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <Card className="mb-2 shadow" style={{ maxWidth: "25rem" }}>
+          <Card className="mb-2 shadow" style={{ maxWidth: "30rem", minWidth: "25rem" }}>
             <div class="row no-gutters">
               <div class="col-sm-5">
                 <Card.Img src={strMealThumb} />

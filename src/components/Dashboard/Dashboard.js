@@ -21,7 +21,7 @@ const Dashboard = ({ pantry, recipes }) => {
             <RecipeView recipes={recipes} itemsPerPage={8} />
           </div>
 
-          <div className="col">
+          <div className="col-3">
             <h3>Inventory</h3>
             <InventoryView pantry={pantry} />
           </div>
