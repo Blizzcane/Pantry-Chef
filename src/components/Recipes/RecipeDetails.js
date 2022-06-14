@@ -82,17 +82,26 @@ const RecipeDetails = () => {
   );
 
   return (
-    <div >
-      <h1 className="text-center display-6 fw-normal">{recipe.strMeal.toUpperCase()}</h1>
-
+    <div>
+      <h1 className="text-center display-6 fw-normal">
+        {recipe.strMeal.toUpperCase()}
+      </h1>
       <div>
         <Button
           variant="outline-success"
           size="sm"
-          className="float-end"
+          className="float-end m-2"
           onClick={() => navigate("/dashboard")}
         >
           Go back
+        </Button>
+        <Button
+          variant="outline-danger"
+          size="sm"
+          className="float-end m-2"
+          onClick={() => window.open(recipe.strYoutube, "_blank")}
+        >
+          Watch Video
         </Button>
         <div>
           <img
@@ -100,7 +109,7 @@ const RecipeDetails = () => {
             className="shadow img-fluid img-thumbnail rounded float-start m-2"
             src={recipe.strMealThumb}
           />
-        </div>{" "}
+        </div>
         <div className="text-center">
           <ButtonGroup className="mt-2">
             {radios.map((radio, idx) => (
