@@ -18,12 +18,12 @@ const IngredientList = ({ ingredients, onAddHandler }) => {
           onChange={({ target }) => setFilter(target.value)}
         />
       </p>
-      <ul className="list-group shadow-sm">
+      <ul className="list-group">
         {ingredients
           .filter(
             (item) =>
               item.strIngredient.toLowerCase().includes(filter) || filter === ""
-          )
+          ) 
           .map((item) => (
             <li
               className="list-group-item list-group-item-action"

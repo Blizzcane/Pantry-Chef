@@ -5,11 +5,11 @@ import RecipeView from "./RecipeView";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 //need to find a cheaper API
 
 const Dashboard = ({ pantry, recipes }) => {
   let navigate = useNavigate();
+  const [filter, setFilter] = useState("");
 
   return (
     <>
@@ -18,7 +18,24 @@ const Dashboard = ({ pantry, recipes }) => {
         <div className="row">
           <div className="col-9">
             <h3>Recipes</h3>
-            <RecipeView recipes={recipes} itemsPerPage={8} />
+            <p>
+              Type to filter the list:
+              <input
+                className="form-control shadow-sm"
+                id="filter"
+                name="filter"
+                type="text"
+                value={filter}
+                onChange={({ target }) => setFilter(target.value)}
+              />
+            </p>
+            <RecipeView
+              recipes={recipes.filter(
+                (recipe) =>
+                  recipe.strMeal.toLowerCase().includes(filter) || filter === ""
+              )}
+              itemsPerPage={8}
+            />
           </div>
 
           <div className="col-3">
