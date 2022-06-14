@@ -59,10 +59,10 @@ const RecipeDetails = () => {
 
   const instructionsJSX = (
     <ListGroup variant="flush" className="m-2" as="ol" numbered>
-      {steps.map((step) => (
+      {steps.map((step, idx) => (
         <ListGroup.Item
           as="li"
-          key={step.slice(0, 4)}
+          key={"step" + idx}
           className="list-group-item"
         >
           {step}.
@@ -73,8 +73,8 @@ const RecipeDetails = () => {
 
   const ingredientsJSX = (
     <ListGroup variant="flush" className="m-2">
-      {ingredients.map((ingredient) => (
-        <ListGroup.Item>
+      {ingredients.map((ingredient, idx) => (
+        <ListGroup.Item key={"ingredient" + idx}>
           {ingredient.measure + " " + ingredient.name}
         </ListGroup.Item>
       ))}
@@ -126,7 +126,7 @@ const RecipeDetails = () => {
                 {radio.name}
               </ToggleButton>
             ))}
-          </ButtonGroup>{" "}
+          </ButtonGroup>
         </div>
         <div>{radioValue === "1" ? instructionsJSX : ingredientsJSX}</div>
       </div>
