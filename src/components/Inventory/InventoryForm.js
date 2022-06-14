@@ -12,13 +12,12 @@ const InventoryForm = ({ onRemoveHandler, inventory, onUpdatePantry }) => {
       <h2 className="text-center">Inventory to Add</h2>
 
       <div className="d-grid gap-2">
-        {inventory.length > 0 ? (
-          <Button onClick={onSubmitHandler} className="btn btn-success btn-sm shadow-sm">Update Pantry</Button>
-        ) : (
+      <Button onClick={onSubmitHandler} className="btn btn-success btn-sm shadow-sm">Update Pantry</Button>
+        {inventory.length == 0 &&
           <p className="text-center text-muted">
             select items to add to your pantry
           </p>
-        )}
+        }
       </div>
       <ul className="list-group shadow-sm">
         {inventory.map((item) => (

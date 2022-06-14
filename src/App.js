@@ -29,10 +29,11 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if(pantry.length ==0) setRecipes([])
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
         .then((response) =>
-          setRecipes((prev) => [...prev, ...response.data.meals])
+          setRecipes((prev) => [...response.data.meals])
         )
         .catch((err) => console.log(err));
     });
