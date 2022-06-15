@@ -30,8 +30,8 @@ const App = () => {
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
         .then((response) => {
-          setRecipes((prev) => [...prev, ...response.data.meals]);
-          console.log(recipes)
+          
+          setRecipes(() => [...recipes, ...response.data.meals]); 
         })
         .catch((err) => console.log(err));
     });
