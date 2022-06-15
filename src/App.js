@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom"; 
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import useFetch from "./utils/useFetch";
 import Header from "./components/Header";
 import Inventory from "./components/Inventory/index";
 import "./App.css";
@@ -12,36 +13,27 @@ import RecipeDetails from "./components/Recipes/RecipeDetails";
 
 const App = () => {
   const { isLoading } = useAuth0();
-  const [ingredients, setIngredients] = useState([]);
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
-
-  const ingredientUrl =
-    "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
+  //initial load of ingredients from TheMealDB
+  const [ingredients, ingredientsError] = useFetch(
+    "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
+  );
   const recipeUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
 
-  //initial load of ingredients from TheMealDB
   useEffect(() => {
-    axios(ingredientUrl)
-      .then((response) => setIngredients(response.data.meals))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    if(pantry.length ==0) setRecipes([])
+    if (pantry.length == 0) setRecipes([]);
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
-        .then((response) =>
-          setRecipes(() => response.data.meals)
-        )
+        .then((response) => setRecipes(() => response.data.meals))
         .catch((err) => console.log(err));
     });
   }, [pantry]);
 
   const onUpdatePantry = (newItems) => {
     setPantry(newItems);
-    navigate("/dashboard")
+    navigate("/dashboard");
   };
 
   if (isLoading) {
