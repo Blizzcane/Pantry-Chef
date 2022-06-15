@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/index";
 import Loading from "./components/Loading";
 import Recipes from "./components/Recipes/index";
 import RecipeDetails from "./components/Recipes/RecipeDetails";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -75,6 +76,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer/>
     </div>
   );
 };

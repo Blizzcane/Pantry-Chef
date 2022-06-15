@@ -60,11 +60,7 @@ const RecipeDetails = () => {
   const instructionsJSX = (
     <ListGroup variant="flush" className="m-2" as="ol" numbered>
       {steps.map((step, idx) => (
-        <ListGroup.Item
-          as="li"
-          key={"step" + idx}
-          className="list-group-item"
-        >
+        <ListGroup.Item as="li" key={"step" + idx} className="list-group-item">
           {step}.
         </ListGroup.Item>
       ))}
@@ -95,14 +91,18 @@ const RecipeDetails = () => {
         >
           Go back
         </Button>
-        <Button
-          variant="outline-danger"
-          size="sm"
-          className="float-end m-2"
-          onClick={() => window.open(recipe.strYoutube, "_blank")}
-        >
-          Watch Video
-        </Button>
+        {recipe.strYoutube != "" ? (
+          <Button
+            variant="outline-danger"
+            size="sm"
+            className="float-end m-2"
+            onClick={() => window.open(recipe.strYoutube, "_blank")}
+          >
+            Watch Video
+          </Button>
+        ) : (
+          ""
+        )}
         <div>
           <img
             style={{ width: "20rem" }}
