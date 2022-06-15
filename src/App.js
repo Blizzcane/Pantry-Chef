@@ -17,6 +17,7 @@ const App = () => {
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
+  
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
