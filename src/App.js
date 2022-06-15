@@ -11,13 +11,14 @@ import Loading from "./components/Loading";
 import Recipes from "./components/Recipes/index";
 import RecipeDetails from "./components/Recipes/RecipeDetails";
 import Footer from "./components/Footer";
+import { Prev } from "react-bootstrap/esm/PageItem";
 
 const App = () => {
   const { isLoading } = useAuth0();
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
-  
+
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
@@ -28,7 +29,9 @@ const App = () => {
     if (pantry.length == 0) setRecipes([]);
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
-        .then((response) => setRecipes(() => [...response.data.meals]))
+        .then((response) =>
+          setRecipes((prev) => [...prev, ...response.data.meals])
+        )
         .catch((err) => console.log(err));
     });
   }, [pantry]);
@@ -77,7 +80,7 @@ const App = () => {
           }
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
