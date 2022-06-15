@@ -29,12 +29,12 @@ const App = () => {
     if (pantry.length == 0) setRecipes([]);
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
-        .then((response) => {
-          
-          setRecipes(() => [...recipes, ...response.data.meals]); 
-        })
+        .then((response) =>
+          setRecipes(() => [...recipes, ...response.data.meals])
+        )
         .catch((err) => console.log(err));
     });
+
   }, [pantry]);
 
   const onUpdatePantry = (newItems) => {
