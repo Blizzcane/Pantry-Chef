@@ -50,11 +50,10 @@ const RecipeDetails = () => {
   const steps = recipe.strInstructions.split(".");
   const ingredients = [];
   for (let i = 1; i <= 20; i++) {
-    if (recipe[`strIngredient${i}`] !== "") {
-      let name = recipe[`strIngredient${i}`];
+    if (recipe[`strIngredient${i}`] === "") break;
+    let name = recipe[`strIngredient${i}`];
       let measure = recipe[`strMeasure${i}`];
       ingredients.push({ name, measure });
-    }
   }
 
   const instructionsJSX = (

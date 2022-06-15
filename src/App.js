@@ -26,11 +26,11 @@ const App = () => {
   const recipeUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
 
   useEffect(() => {
-    if (pantry.length == 0) setRecipes([]);
+    setRecipes([]);
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
         .then((response) =>
-          setRecipes(() => [...recipes, ...response.data.meals])
+          setRecipes((prev) => [...prev, ...response.data.meals])
         )
         .catch((err) => console.log(err));
     });
