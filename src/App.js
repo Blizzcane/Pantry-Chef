@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./App.css";
 import axios from "axios";
 import useFetch from "./utils/useFetch";
 import Header from "./components/Header";
 import Inventory from "./components/Inventory/index";
-import "./App.css";
 import Dashboard from "./components/Dashboard/index";
 import Loading from "./components/Loading";
 import Recipes from "./components/Recipes/index";
 import RecipeDetails from "./components/Recipes/RecipeDetails";
 import Footer from "./components/Footer";
-import { Prev } from "react-bootstrap/esm/PageItem";
 
 const App = () => {
   const { isLoading } = useAuth0();
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [favorites, setFavorites] = useState([]); //stores user's favorite recipes
   const navigate = useNavigate();
 
   //initial load of ingredients from TheMealDB
@@ -34,12 +34,25 @@ const App = () => {
         )
         .catch((err) => console.log(err));
     });
-
   }, [pantry]);
 
   const onUpdatePantry = (newItems) => {
     setPantry(newItems);
     navigate("/dashboard");
+  };
+  const onFavUpdate = (id, action) => {
+    switch (action) {
+      case "add":
+        setFavorites((prev) => [...new Set([...prev, id])]);
+        break;
+      case "remove":
+        let newFavs = favorites.filter((favId) => favId !== id);
+        setFavorites(() => newFavs);
+        break;
+      default:
+        break;
+    }
+    console.log("favorites:",favorites)
   };
 
   if (isLoading) {
@@ -69,8 +82,14 @@ const App = () => {
             />
           }
         />
-        <Route path="/recipe-details" element={<RecipeDetails />}>
-          <Route path=":recipeId" element={<RecipeDetails />} />
+        <Route
+          path="/recipe-details"
+          element={<RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />}
+        >
+          <Route
+            path=":recipeId"
+            element={<RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />}
+          />
         </Route>
         <Route
           path="*"
