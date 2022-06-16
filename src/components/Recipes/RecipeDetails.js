@@ -23,8 +23,7 @@ const RecipeDetails = ({ onFavUpdate, favorites }) => {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
       );
       const data = await response.json();
-      setRecipe(data.meals[0]);
-      if (favorites.find((fav) => fav === recipe.idMeal)) setFav(true);
+      setRecipe(data.meals[0]); 
     };
 
     fetchData();
