@@ -23,18 +23,16 @@ const RecipeDetails = ({ onFavUpdate, favorites }) => {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
       );
       const data = await response.json();
-      setRecipe(data.meals[0]); 
+      setRecipe(data.meals[0]);
     };
 
-    fetchData(); 
-    setFav(favorites.includes(recipe?.idMeal)) 
-    
+    fetchData();
+    setFav(favorites.includes(recipeId));
+
     return () => {
       abortController.abort();
     };
   }, [recipeId]);
- 
-  
 
   if (!recipe)
     return (
