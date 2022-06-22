@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup, ListGroup, ToggleButton } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import useFavorite from "../../utils/useFavorite";
 
 const RecipeDetails = ({ onFavUpdate, favorites }) => {
   let navigate = useNavigate();
   let { recipeId } = useParams();
-  const [recipe, setRecipe] = useState(null); 
+  const [recipe, setRecipe] = useState(null);
   const [radioValue, setRadioValue] = useState("1");
   const [fav, setFav] = useState(false);
 
@@ -25,12 +26,15 @@ const RecipeDetails = ({ onFavUpdate, favorites }) => {
       setRecipe(data.meals[0]); 
     };
 
-    fetchData();
-
+    fetchData(); 
+    setFav(favorites.includes(recipe?.idMeal)) 
+    
     return () => {
       abortController.abort();
     };
   }, [recipeId]);
+ 
+  
 
   if (!recipe)
     return (

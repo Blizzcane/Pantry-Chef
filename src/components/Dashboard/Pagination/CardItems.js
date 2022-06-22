@@ -12,11 +12,11 @@ const CardItems = ({ currentItems }) => {
           style={{ textDecoration: "none", color: "black" }}
         >
           <Card className="mb-2 shadow" style={{ maxWidth: "30rem", minWidth: "25rem" }}>
-            <div class="row no-gutters">
-              <div class="col-sm-5">
+            <div className="row no-gutters">
+              <div className="col-sm-5">
                 <Card.Img src={strMealThumb} />
               </div>
-              <div class="col-sm-7"> 
+              <div className="col-sm-7"> 
                 <Card.Body>
                   <Card.Title>{strMeal.toUpperCase()} </Card.Title>
                 </Card.Body>
