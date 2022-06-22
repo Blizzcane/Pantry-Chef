@@ -5,8 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const RecipeDetails = ({ onFavUpdate, favorites }) => {
   let navigate = useNavigate();
   let { recipeId } = useParams();
-  const [recipe, setRecipe] = useState(null);
-  const [showInstructions, setShowInstructions] = useState(false);
+  const [recipe, setRecipe] = useState(null); 
   const [radioValue, setRadioValue] = useState("1");
   const [fav, setFav] = useState(false);
 
