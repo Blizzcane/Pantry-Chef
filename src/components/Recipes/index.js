@@ -12,8 +12,7 @@ const Recipes = ({ recipes }) => {
           <li
             onClick={() => {
               setOpen(!open);
-              setRecipeInfo(recipe);
-              console.log(recipeInfo);
+              setRecipeInfo(recipe); 
             }}
             aria-controls="recipe-details"
             aria-expanded={open}
@@ -24,7 +23,7 @@ const Recipes = ({ recipes }) => {
           </li>
         ))}
       </ul>
-      <RecipePopUp recipe={recipeInfo} open={open} />
+      <RecipePopUp recipeId={recipeInfo?.idMeal} open={open} />
     </div>
   );
 };
