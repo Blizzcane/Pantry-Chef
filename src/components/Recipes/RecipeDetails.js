@@ -95,7 +95,7 @@ const RecipeDetails = ({ onFavUpdate, favorites }) => {
           variant="outline-success"
           size="sm"
           className="float-end m-2"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate(-1)}
         >
           Go back
         </Button>
