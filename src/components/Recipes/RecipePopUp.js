@@ -10,13 +10,13 @@ const RecipePopUp = ({ recipeId, open }) => {
 
   return (
     recipe && (
-      <aside style={{ minHeight: "100vh" }}>
+      <aside className="m-2" style={{ minHeight: "100vh" }}>
         <Collapse in={open} dimension="width">
           <div id="recipe-details">
             <Card style={{ width: "20rem" }}>
               <Card.Img variant="top" src={recipe[0]?.strMealThumb} />
               <Card.Body>
-                <Card>
+                <Card  className="m-1">
                   <Card.Body>
                     <Card.Title>{recipe[0]?.strMeal}</Card.Title>
                   </Card.Body>
