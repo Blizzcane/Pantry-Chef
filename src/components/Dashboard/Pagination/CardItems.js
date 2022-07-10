@@ -11,12 +11,15 @@ const CardItems = ({ currentItems }) => {
           to={`/recipe-details/${idMeal}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <Card className="mb-2 shadow" style={{ maxWidth: "30rem", minWidth: "25rem" }}>
+          <Card
+            className="mb-2 shadow"
+            style={{ maxWidth: "30rem", minWidth: "25rem" }}
+          >
             <div className="row no-gutters">
               <div className="col-sm-5">
                 <Card.Img src={strMealThumb} />
               </div>
-              <div className="col-sm-7"> 
+              <div className="col-sm-7">
                 <Card.Body>
                   <Card.Title>{strMeal.toUpperCase()} </Card.Title>
                 </Card.Body>
