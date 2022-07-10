@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Profile from "../Profile";
 import InventoryView from "./InventoryView";
-import RecipeView from "./RecipeView";
-import axios from "axios";
+import RecipeView from "./RecipeView"; 
 import { useNavigate } from "react-router-dom";
 
 //need to find a cheaper API

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import IngredientList from "./IngredientList";
 import InventoryForm from "./InventoryForm";
 import "./index.css";
@@ -15,7 +15,7 @@ const Inventory = ({ ingredients, onUpdatePantry, pantry }) => {
   const onAddHandler = (item) => {
     const set = new Set(inventory); //helps avoid duplicate entries
     set.add(item);
-    setInventory(() => [...set]); 
+    setInventory(() => [...set]);
   };
 
   //removes from the inventory form
