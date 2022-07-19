@@ -12,14 +12,20 @@ import Recipes from "./components/Recipes/index";
 import RecipeDetails from "./components/Recipes/RecipeDetails";
 import Footer from "./components/Footer";
 
+//add useReducer for state management
+const reducer = (state, action) => {
+  switch (action.type) {
+    default:
+      throw new Error();
+  }
+};
+
 const App = () => {
   const { isLoading } = useAuth0();
   const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [favorites, setFavorites] = useState([]); //stores user's favorite recipes
   const navigate = useNavigate();
-
-  //add useReducer for state management
 
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
@@ -54,7 +60,7 @@ const App = () => {
       default:
         break;
     }
-    console.log("favorites:",favorites)
+    console.log("favorites:", favorites);
   };
 
   if (isLoading) {
@@ -86,11 +92,15 @@ const App = () => {
         />
         <Route
           path="/recipe-details"
-          element={<RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />}
+          element={
+            <RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />
+          }
         >
           <Route
             path=":recipeId"
-            element={<RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />}
+            element={
+              <RecipeDetails favorites={favorites} onFavUpdate={onFavUpdate} />
+            }
           />
         </Route>
         <Route
