@@ -19,6 +19,8 @@ const App = () => {
   const [favorites, setFavorites] = useState([]); //stores user's favorite recipes
   const navigate = useNavigate();
 
+  //add useReducer for state management
+
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
     "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
