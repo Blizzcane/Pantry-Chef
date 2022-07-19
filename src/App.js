@@ -18,6 +18,7 @@ const reducer = (state, action) => {
     case "SET_PANTRY":
       return { ...state, pantry: action.payload };
     case "SET_RECIPES":
+      console.log(action.payload);
       return { ...state, recipes: action.payload };
     case "SET_FAVORITES":
       return { ...state, favorites: action.payload };
@@ -26,18 +27,18 @@ const reducer = (state, action) => {
   }
 };
 const INITIAL_STATE = {
-  // pantry: [],
+  pantry: [],
   // recipes: [],
   // favorites: [],
 };
 
 const App = () => {
   const { isLoading } = useAuth0();
-  const [pantry, setPantry] = useState([]);
+  // const [pantry, setPantry] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [favorites, setFavorites] = useState([]); //stores user's favorite recipes
+  const [{ pantry }, dispatch] = useReducer(reducer, INITIAL_STATE);
   const navigate = useNavigate();
-  const [state, dispatch] = useReducer(INITIAL_STATE, reducer);
 
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
@@ -46,18 +47,19 @@ const App = () => {
   const recipeUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
 
   useEffect(() => {
+    // dispatch({ type: "SET_RECIPES", payload: [] });
     setRecipes([]);
     pantry.forEach((item) => {
       axios(recipeUrl + item.strIngredient)
         .then((response) =>
-          setRecipes((prev) => [...prev, ...response.data.meals])
+          setRecipes((prev) => [...prev, ...response.data.meals]) 
         )
         .catch((err) => console.log(err));
-    });
+    });  
   }, [pantry]);
 
   const onUpdatePantry = (newItems) => {
-    setPantry(newItems);
+    dispatch({ type: "SET_PANTRY", payload: newItems });
     navigate("/dashboard");
   };
   const onFavUpdate = (id, action) => {
