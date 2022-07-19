@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
@@ -15,9 +15,20 @@ import Footer from "./components/Footer";
 //add useReducer for state management
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SET_PANTRY":
+      return { ...state, pantry: action.payload };
+    case "SET_RECIPES":
+      return { ...state, recipes: action.payload };
+    case "SET_FAVORITES":
+      return { ...state, favorites: action.payload };
     default:
       throw new Error();
   }
+};
+const INITIAL_STATE = {
+  // pantry: [],
+  // recipes: [],
+  // favorites: [],
 };
 
 const App = () => {
@@ -26,6 +37,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [favorites, setFavorites] = useState([]); //stores user's favorite recipes
   const navigate = useNavigate();
+  const [state, dispatch] = useReducer(INITIAL_STATE, reducer);
 
   //initial load of ingredients from TheMealDB
   const [ingredients, ingredientsError] = useFetch(
